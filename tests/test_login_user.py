@@ -1,5 +1,5 @@
 """Модуль содержит автотесты, проверяющие позитивные и негативные сценарии авторизации пользователя"""
-
+import allure
 import requests
 import pytest
 from api.api_helpers import email_generate, password_generate, first_name_generate, delete_user
@@ -8,6 +8,9 @@ from api.api_urls import Urls
 
 
 class TestLoginUser:
+    @allure.title('Проверка успешной авторизации пользователя')
+    @allure.description('Проверяем, что при указании корректных полей email, password, name пользователя можно '
+                        'авторизовать')
     def test_login_user(self):
         payload = {
             "email": email_generate(),
@@ -26,6 +29,9 @@ class TestLoginUser:
         # постусловие: удаляем только что созданного пользователя
         delete_user(response_for_delete_json)
 
+    @allure.title('Проверка невозможности авторизации пользователя')
+    @allure.description('Проверяем, что при указании некорректных полей email и password пользователя нельзя '
+                        'авторизовать')
     def test_login_user_with_incorrect_login_and_password(self):
         payload_for_create = {
             "email": email_generate(),

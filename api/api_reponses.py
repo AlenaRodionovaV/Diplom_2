@@ -11,6 +11,9 @@ class Responses:
     #  ключи ответа на запрос о создании заказа
     CREATE_ORDER_RESPONSE_KEYS = {"success", "name", "order"}
 
+    #  ключи ответа на запрос получения списка заказов конкретного пользователя
+    GET_ORDER_LIST_RESPONSE_KEYS = {"success", "orders", "total", "totalToday"}
+
     #  тело ответа на запрос удаления пользователя
     DELETE_USER_RESPONSE = {
         "success": False,
@@ -30,7 +33,7 @@ class Responses:
     }
 
     #  тело ответа на запрос об изменении данных неавторизованного пользователя
-    UPDATE_USER_INFO_UNAUTHORISED_RESPONSE = {
+    USER_UNAUTHORISED_RESPONSE = {
         "success": False,
         "message": "You should be authorised"
     }

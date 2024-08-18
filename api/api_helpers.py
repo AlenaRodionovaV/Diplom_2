@@ -1,7 +1,6 @@
 """Модуль содержит методы с генерацией и удалением тестовых данных"""
 import requests
 from faker import Faker
-
 from api.api_urls import Urls
 
 fake = Faker('ru_RU')
